@@ -1,0 +1,15 @@
+root = "."
+tmp_dir = "tmp"
+
+[build]
+cmd = "protoc --go_out=. --go-grpc_out=. pb/*.proto && go build -o ./tmp/app server/main.go"
+bin = "./tmp/app"
+full_bin = "./tmp/app"
+include_ext = ["go", "pb"]
+exclude_dir = ["tmp"]
+exclude_regex = [".pb.go$"]  # No need to escape the dot in TOML
+delay = 1000 # ms
+debug = true       # Enable debug mode in Air itself
+
+[screen]
+clear_on_rebuild = true
